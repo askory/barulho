@@ -18,15 +18,14 @@ See REQUIREMENTS.md for full specs and PLAN.md for implementation details.
 
 ```bash
 # Install system dependencies (Ubuntu)
-sudo apt install libgtk-4-dev libgirepository1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
+sudo apt install libgtk-4-dev libgirepository1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly python3-gi python3-gi-cairo gir1.2-gtk-4.0
 
-# Install Python package in dev mode
-pip install -e .
+# Create venv with system site-packages (for GTK bindings)
+python3 -m venv --system-site-packages .venv
+.venv/bin/pip install python-rtmidi
 
 # Run the app
-python run.py
-# or after install:
-barulho
+.venv/bin/python run.py
 ```
 
 ## Architecture

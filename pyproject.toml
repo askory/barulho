@@ -1,0 +1,16 @@
+[project]
+name = "barulho"
+version = "0.1.0"
+description = "Play audio samples in response to MIDI events"
+requires-python = ">=3.10"
+dependencies = [
+    "PyGObject>=3.42",
+    "python-rtmidi>=1.5",
+]
+
+[project.scripts]
+barulho = "barulho.main:main"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
