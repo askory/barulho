@@ -22,17 +22,13 @@ A Linux desktop app that plays audio samples in response to MIDI events. Support
 ## Installation
 
 ```bash
-# Install system dependencies
-sudo apt install libgtk-4-dev libgirepository1.0-dev \
-    gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
-    python3-gi python3-gi-cairo gir1.2-gtk-4.0
+./install.sh
+```
 
-# Create virtual environment and install Python dependencies
-python3 -m venv --system-site-packages .venv
-.venv/bin/pip install python-rtmidi
+## Running
 
-# Run
-.venv/bin/python run.py
+```bash
+./run.sh
 ```
 
 ## Usage
