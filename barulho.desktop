@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Barulho
+Comment=Play audio samples in response to MIDI events
+Exec=barulho
+Icon=barulho
+Terminal=false
+Type=Application
+Categories=Audio;Music;MIDI;
+Keywords=midi;sample;audio;music;

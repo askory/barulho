@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Speaker body -->
+  <rect x="20" y="40" width="30" height="48" rx="4" fill="#3584e4"/>
+  <!-- Speaker cone -->
+  <polygon points="50,40 85,20 85,108 50,88" fill="#3584e4"/>
+  <!-- Sound waves -->
+  <path d="M95,44 Q110,64 95,84" stroke="#1a5fb4" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M105,30 Q125,64 105,98" stroke="#1a5fb4" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- MIDI dot -->
+  <circle cx="35" cy="64" r="8" fill="#ffffff"/>
+</svg>

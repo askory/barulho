@@ -21,13 +21,19 @@ A Linux desktop app that plays audio samples in response to MIDI events. Support
 
 ## Installation
 
+### Option 1: Install as Ubuntu package (recommended)
+
 ```bash
-./install.sh
+./build-deb.sh
+sudo dpkg -i barulho_0.1.0.deb
 ```
 
-## Running
+Then launch from your application menu or run `barulho` from the terminal.
+
+### Option 2: Run from source
 
 ```bash
+./install.sh
 ./run.sh
 ```
 

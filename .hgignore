@@ -13,3 +13,7 @@ __pycache__/
 
 # Config
 .claude/
+
+# Build artifacts
+*.deb
+barulho_*/
