@@ -4,12 +4,39 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Barulho is an audio application that plays audio samples in response to MIDI events, with support for MIDI over Bluetooth connectivity.
+Barulho is a Linux desktop app (Ubuntu) that plays audio samples in response to MIDI events. Python + GTK 4.
 
-## Current Status
+See REQUIREMENTS.md for full specs and PLAN.md for implementation details.
 
-This repository is in initial setup phase. Build commands, test framework, and development workflows will be documented here as the project develops.
+## Tech Stack
+
+- **GUI**: GTK 4 via PyGObject
+- **MIDI**: python-rtmidi
+- **Audio**: GStreamer via PyGObject
+
+## Development Commands
+
+```bash
+# Install system dependencies (Ubuntu)
+sudo apt install libgtk-4-dev libgirepository1.0-dev gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
+
+# Install Python package in dev mode
+pip install -e .
+
+# Run the app
+python run.py
+# or after install:
+barulho
+```
+
+## Architecture
+
+- `barulho/main.py` - Entry point
+- `barulho/window.py` - Main window layout
+- `barulho/midi_handler.py` - MIDI input (runs on separate thread, use `GLib.idle_add()` for GTK updates)
+- `barulho/audio_player.py` - GStreamer playback engine
+- `barulho/config.py` - JSON config load/save
 
 ## Version Control
 
-This project uses Mercurial (hg) as the primary VCS with a git mirror at `git@github.com:askory/barulho`.
+Mercurial (hg) primary VCS with git mirror at `git@github.com:askory/barulho`.
