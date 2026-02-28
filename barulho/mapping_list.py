@@ -5,7 +5,10 @@ import gi
 gi.require_version("Gtk", "4.0")
 from gi.repository import Gtk, GLib
 
-from barulho.config import Mapping, Config, save_config, load_config
+from barulho.config import (
+    Mapping, Config, save_config, load_config,
+    save_last_config_path, load_last_config_path,
+)
 from barulho.mapping_row import MappingRow
 from barulho.audio_player import AudioPlayer
 from pathlib import Path
@@ -78,8 +81,11 @@ class MappingListWidget(Gtk.Box):
         self.append(scrolled)
 
     def load_from_file(self, path: Path | None = None):
-        """Load config from file."""
+        """Load config from file. Uses last-used path if none given."""
+        if path is None:
+            path = load_last_config_path()
         self.config, self.config_path = load_config(path)
+        save_last_config_path(self.config_path)
         self.global_volume.set_value(self.config.global_volume * 100)
         self.audio_player.global_volume = self.config.global_volume
 
@@ -96,6 +102,7 @@ class MappingListWidget(Gtk.Box):
         """Save config to file."""
         save_path = path or self.config_path
         self.config_path = save_config(self.config, save_path)
+        save_last_config_path(self.config_path)
 
     def handle_midi_event(self, note: int):
         """Handle MIDI note for recording mode."""

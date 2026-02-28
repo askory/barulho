@@ -26,6 +26,22 @@ class Config:
 
 DEFAULT_CONFIG_DIR = Path.home() / ".config" / "barulho"
 DEFAULT_CONFIG_PATH = DEFAULT_CONFIG_DIR / "config.json"
+LAST_CONFIG_FILE = DEFAULT_CONFIG_DIR / "last_config_path"
+
+
+def save_last_config_path(path: Path):
+    """Remember the most recently used config path."""
+    LAST_CONFIG_FILE.parent.mkdir(parents=True, exist_ok=True)
+    LAST_CONFIG_FILE.write_text(str(path))
+
+
+def load_last_config_path() -> Path | None:
+    """Load the most recently used config path, if it still exists."""
+    if LAST_CONFIG_FILE.exists():
+        path = Path(LAST_CONFIG_FILE.read_text().strip())
+        if path.exists():
+            return path
+    return None
 
 
 def load_config(path: Path | None = None) -> tuple[Config, Path]:
