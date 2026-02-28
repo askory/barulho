@@ -51,6 +51,11 @@ class MidiHandler:
 
         probe.delete()
 
+    def rescan(self):
+        """Close all ports and re-scan for MIDI devices."""
+        self.stop()
+        self.start()
+
     def stop(self):
         """Close all MIDI inputs."""
         self._running = False

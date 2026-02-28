@@ -14,7 +14,15 @@ class MidiLogWidget(Gtk.Frame):
     """Scrollable log of MIDI events."""
 
     def __init__(self):
-        super().__init__(label="MIDI Events")
+        super().__init__()
+
+        # Frame header with label and scan button
+        header = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=8)
+        header.append(Gtk.Label(label="MIDI Events"))
+        self.scan_btn = Gtk.Button(label="Scan MIDI")
+        self.scan_btn.set_tooltip_text("Rescan for MIDI devices")
+        header.append(self.scan_btn)
+        self.set_label_widget(header)
 
         # Scrolled window for the log
         scrolled = Gtk.ScrolledWindow()

@@ -44,6 +44,9 @@ class MainWindow(Gtk.ApplicationWindow):
         self.midi_handler = MidiHandler(self._on_midi_event)
         self.midi_handler.start()
 
+        # Connect scan button
+        self.midi_log.scan_btn.connect("clicked", self._on_scan_midi)
+
         # Clean up on close
         self.connect("close-request", self._on_close)
 
@@ -82,6 +85,10 @@ class MainWindow(Gtk.ApplicationWindow):
                     velocity_factor=velocity_factor,
                 )
                 break  # One mapping per note
+
+    def _on_scan_midi(self, _btn):
+        """Rescan for MIDI devices."""
+        self.midi_handler.rescan()
 
     def _on_close(self, _window):
         """Handle window close - auto-save and cleanup."""
