@@ -118,7 +118,7 @@ class MappingListWidget(Gtk.Box):
 
     def _on_add_clicked(self, _btn):
         """Add a new mapping."""
-        mapping = Mapping(note=60, file_path="", volume=0.5, velocity_sensitive=True)
+        mapping = Mapping(note=60, file_path="", volume=0.8, velocity_sensitive=True)
         self.config.mappings.append(mapping)
         row = self._add_row(mapping)
         # Start recording mode for new mapping
